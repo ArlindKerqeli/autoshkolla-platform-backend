@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista e Kandidatëve</title>
+  <style>
+    /* Page setup */
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+      @bottom-center {
+        content: "Faqja " counter(page) " nga " counter(pages);
+        font-size: 9pt;
+        color: #666;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DejaVu Sans', Arial, sans-serif;
+      font-size: 9pt;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    /* Header section */
+    .list-header {
+      margin-bottom: 12pt;
+      padding-bottom: 8pt;
+      border-bottom: 2pt solid #1a2744;
+    }
+
+    .list-header h1 {
+      font-size: 16pt;
+      font-weight: bold;
+      color: #1a2744;
+      text-align: center;
+      margin-bottom: 4pt;
+      letter-spacing: 0.5pt;
+    }
+
+    .list-header p {
+      font-size: 10pt;
+      text-align: center;
+      color: #555;
+    }
+
+    /* Meta information (filters, date) */
+    .list-meta {
+      margin-bottom: 10pt;
+      padding: 6pt 8pt;
+      background-color: #f8f9fa;
+      border: 1pt solid #ddd;
+      font-size: 8.5pt;
+    }
+
+    .list-meta p {
+      margin: 3pt 0;
+      color: #666;
+    }
+
+    .list-meta p:first-child {
+      margin-bottom: 4pt;
+    }
+
+    /* Table styling */
+    .candidate-list-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8pt 0;
+      font-size: 8pt;
+    }
+
+    .candidate-list-table thead {
+      background-color: #1a2744;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .candidate-list-table thead th {
+      padding: 6pt 4pt;
+      text-align: left;
+      border: 1pt solid #1a2744;
+      font-size: 8pt;
+      vertical-align: middle;
+    }
+
+    .candidate-list-table tbody td {
+      padding: 4pt 4pt;
+      border: 1pt solid #ddd;
+      vertical-align: middle;
+    }
+
+    /* Alternating row colors */
+    .candidate-list-table tbody tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    .candidate-list-table tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    /* Column alignment */
+    .candidate-list-table th:nth-child(1),
+    .candidate-list-table td:nth-child(1) {
+      width: 3%;
+      text-align: center;
+    }
+
+    .candidate-list-table th:nth-child(2),
+    .candidate-list-table td:nth-child(2) {
+      width: 6%;
+      text-align: left;
+    }
+
+    .candidate-list-table th:nth-child(3),
+    .candidate-list-table td:nth-child(3) {
+      width: 14%;
+      text-align: left;
+    }
+
+    .candidate-list-table th:nth-child(4),
+    .candidate-list-table td:nth-child(4) {
+      width: 10%;
+      text-align: left;
+    }
+
+    .candidate-list-table th:nth-child(5),
+    .candidate-list-table td:nth-child(5) {
+      width: 5%;
+      text-align: center;
+    }
+
+    .candidate-list-table th:nth-child(6),
+    .candidate-list-table td:nth-child(6) {
+      width: 9%;
+      text-align: center;
+    }
+
+    .candidate-list-table th:nth-child(7),
+    .candidate-list-table td:nth-child(7) {
+      width: 13%;
+      text-align: left;
+    }
+
+    .candidate-list-table th:nth-child(8),
+    .candidate-list-table td:nth-child(8) {
+      width: 8%;
+      text-align: right;
+    }
+
+    .candidate-list-table th:nth-child(9),
+    .candidate-list-table td:nth-child(9) {
+      width: 8%;
+      text-align: right;
+    }
+
+    .candidate-list-table th:nth-child(10),
+    .candidate-list-table td:nth-child(10) {
+      width: 8%;
+      text-align: right;
+    }
+
+    .candidate-list-table th:nth-child(11),
+    .candidate-list-table td:nth-child(11) {
+      width: 6%;
+      text-align: center;
+    }
+
+    /* Currency formatting */
+    .currency-value {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+
+    /* Footer section with totals */
+    .list-footer {
+      margin-top: 10pt;
+      padding: 8pt;
+      background-color: #1a2744;
+      color: #fff;
+      font-weight: bold;
+      font-size: 9pt;
+      border: 1pt solid #1a2744;
+    }
+
+    .list-footer p {
+      margin: 0;
+      letter-spacing: 0.3pt;
+    }
+
+    /* Bottom summary */
+    .list-summary {
+      margin-top: 12pt;
+      padding-top: 8pt;
+      border-top: 1pt solid #ddd;
+      font-size: 8.5pt;
+      color: #666;
+      text-align: right;
+    }
+
+    .list-summary p {
+      margin: 3pt 0;
+    }
+
+    /* Print-specific optimizations */
+    @media print {
+      body {
+        background: white;
+      }
+      .candidate-list-table {
+        page-break-inside: avoid;
+      }
+      .list-footer {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="list-header">
+  <h1>LISTA E KANDIDATËVE</h1>
+  <p>{{ tenant.name }} — {{ tenant.city|safe_str }}</p>
+</div>
+
+<div class="list-meta">
+  <p><strong>Data e printimit:</strong> {{ today|format_date }}</p>
+  {% if filters.get('from_date') or filters.get('to_date') or filters.get('category_id') or filters.get('instructor_id') %}
+  <p style="margin-top: 4pt;">
+    <strong>Filtrat aktiv:</strong>
+    {% if filters.get('from_date') or filters.get('to_date') %}
+    Periudha: {{ filters.get('from_date', '')|safe_str }} deri {{ filters.get('to_date', '')|safe_str }}
+    {% endif %}
+    {% if filters.get('category_id') %} | Kategoria: {{ filters.get('category_id')|safe_str }}{% endif %}
+    {% if filters.get('instructor_id') %} | Instruktori: {{ filters.get('instructor_id')|safe_str }}{% endif %}
+    {% if filters.get('archived') %} | Arkiv: {{ filters.get('archived')|safe_str }}{% endif %}
+  </p>
+  {% endif %}
+</div>
+
+<table class="candidate-list-table">
+  <thead>
+    <tr>
+      <th>Nr</th>
+      <th>Kodi</th>
+      <th>Emri Mbiemri</th>
+      <th>Nr. Personal</th>
+      <th>Kat.</th>
+      <th>Data Regj.</th>
+      <th>Instruktori</th>
+      <th>Çmimi</th>
+      <th>Paguar</th>
+      <th>Borxhi</th>
+      <th>Statusi</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for c in candidates %}
+    <tr>
+      <td>{{ loop.index }}</td>
+      <td>{{ c.code }}</td>
+      <td>{{ c.first_name }} {{ c.last_name }}</td>
+      <td>{{ c.personal_number }}</td>
+      <td>{% if c.category %}{{ c.category.code }}{% else %}—{% endif %}</td>
+      <td>{{ c.registration_date|format_date }}</td>
+      <td>{% if c.instructor %}{{ c.instructor.full_name }}{% else %}—{% endif %}</td>
+      <td><span class="currency-value">{{ c.price|format_currency }} €</span></td>
+      <td><span class="currency-value">{{ c.amount_paid|format_currency }} €</span></td>
+      <td><span class="currency-value">{{ c.debt|format_currency }} €</span></td>
+      <td>{% if c.is_archived %}<strong>Arkiv</strong>{% else %}Aktiv{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if candidates %}
+<div class="list-footer">
+  <p>
+    TOTALI: Çmimi: <span class="currency-value">{{ candidates|sum(attribute='price')|format_currency }} €</span> | Paguar: <span class="currency-value">{{ candidates|sum(attribute='amount_paid')|format_currency }} €</span> | Borxhi: <span class="currency-value">{{ candidates|map(attribute='debt')|sum|format_currency }} €</span>
+  </p>
+</div>
+{% endif %}
+
+<div class="list-summary">
+  <p><strong>Numri total i kandidatëve:</strong> {{ total_count }}</p>
+  <p><strong>Data e printimit:</strong> {{ today|format_date }}</p>
+</div>
+
+</body>
+</html>

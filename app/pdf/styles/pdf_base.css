@@ -1,0 +1,431 @@
+/* ================================================================
+   AutoShkolla Pro — Shared PDF Stylesheet
+   ================================================================ */
+
+/* --- Page defaults --- */
+@page {
+  size: A4;
+  margin: 15mm;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+p { margin: 2mm 0; }
+table { border-collapse: collapse; }
+
+/* ================================================================
+   FATURA (Invoice)
+   ================================================================ */
+
+.header-invoice {
+  width: 100%;
+  margin-bottom: 15mm;
+  border-collapse: collapse;
+}
+.header-invoice td {
+  padding: 5mm;
+  vertical-align: top;
+}
+.header-left { text-align: left; width: 33%; }
+.school-name-italic { font-style: italic; font-size: 10pt; margin: 0; }
+.invoice-title { font-size: 24pt; font-weight: bold; margin: 5mm 0 0 0; }
+.header-center { text-align: center; width: 34%; }
+.header-logo { height: 35mm; width: auto; }
+.header-right { text-align: right; width: 33%; font-size: 10pt; }
+.header-right p { margin: 2mm 0; }
+
+.business-info {
+  width: 100%;
+  margin-bottom: 15mm;
+  border-collapse: collapse;
+}
+.info-header { background-color: #e0e0e0; height: 8mm; }
+.info-header td {
+  padding: 2mm 3mm;
+  font-size: 10pt;
+  font-weight: bold;
+  border: 1px solid #999;
+}
+.info-header-left { width: 50%; }
+.info-header-right { width: 50%; }
+.info-row td {
+  padding: 2mm 3mm;
+  vertical-align: top;
+  font-size: 9.5pt;
+  border: 1px solid #ccc;
+}
+.info-column-left { width: 50%; }
+.info-column-right { width: 50%; }
+.info-row p { margin: 1mm 0; }
+
+.service-table { width: 100%; border-collapse: collapse; margin-bottom: 10mm; font-size: 10pt; }
+.table-header { background-color: #e0e0e0; height: 8mm; }
+.table-header th {
+  padding: 2mm 3mm;
+  border: 1px solid #999;
+  font-weight: bold;
+  text-align: center;
+}
+.col-nr { width: 4%; }
+.col-description { width: 40%; text-align: left; }
+.col-unit { width: 8%; }
+.col-quantity { width: 8%; }
+.col-price { width: 12%; }
+.col-vat { width: 12%; }
+.col-total { width: 16%; }
+.service-table tbody tr { border: 1px solid #ccc; height: 10mm; }
+.service-table td { padding: 2mm 3mm; vertical-align: middle; }
+.col-nr, .col-quantity, .col-price, .col-vat, .col-total { text-align: right; }
+
+.totals-table {
+  margin-left: auto;
+  margin-right: 0;
+  width: 50%;
+  margin-bottom: 15mm;
+  border-collapse: collapse;
+  font-size: 10pt;
+}
+.totals-table tr { height: 6mm; }
+.totals-table td { padding: 1mm 3mm; border: 1px solid #ccc; }
+.total-label { width: 50%; text-align: left; background-color: #f5f5f5; }
+.total-value { width: 50%; text-align: right; background-color: #fff; }
+.total-final .total-label,
+.total-final .total-value {
+  background-color: #ffeb99;
+  font-size: 11pt;
+}
+
+.payment-history { margin-top: 10mm; }
+.payment-history h4 { font-size: 10pt; margin-bottom: 3mm; }
+.payment-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+.payment-table th {
+  background-color: #e0e0e0;
+  padding: 2mm 3mm;
+  border: 1px solid #999;
+  font-weight: bold;
+}
+.payment-table td { padding: 2mm 3mm; border: 1px solid #ccc; }
+
+.bank-details { margin-top: 10mm; width: 50%; }
+.bank-details h4 { font-size: 10pt; font-weight: bold; margin: 0 0 3mm 0; }
+.bank-divider { border: none; border-top: 1px solid #000; margin: 2mm 0; }
+.bank-details p { font-size: 10pt; margin: 2mm 0; }
+
+/* ================================================================
+   FLETËPARAQITJA (Registration Form) — Government form
+   ================================================================ */
+
+.page1-header {
+  position: relative;
+  margin-bottom: 10mm;
+  text-align: center;
+  background-color: #e8f0f8;
+  padding: 5mm;
+  border: 2px solid #003d99;
+}
+.category-letter {
+  position: absolute;
+  top: 5mm;
+  left: 5mm;
+  font-size: 36pt;
+  font-weight: bold;
+  color: #003d99;
+}
+.school-name-top { font-size: 11pt; font-weight: bold; margin-bottom: 3mm; }
+.coat-of-arms { margin: 3mm 0; }
+.coat-of-arms img { height: 25mm; width: auto; }
+.trilingual-header { font-size: 9pt; line-height: 1.3; margin: 3mm 0; }
+.trilingual-header p { margin: 1mm 0; }
+.header-main, .header-sub { font-weight: bold; }
+.header-ministry { font-size: 8.5pt; }
+.header-unit { font-weight: bold; margin-top: 2mm; }
+.form-identifier {
+  margin-top: 3mm;
+  font-size: 10pt;
+  background-color: #fff;
+  padding: 2mm;
+}
+
+.personal-data { margin: 8mm 0; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+.data-table tr { border: 1px solid #000; height: 7mm; }
+.label-col {
+  width: 40%;
+  padding: 2mm 3mm;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  vertical-align: top;
+}
+.value-col { width: 60%; padding: 2mm 3mm; vertical-align: middle; }
+.char-boxes { letter-spacing: 1mm; }
+.char-box {
+  display: inline-block;
+  width: 6mm;
+  height: 6mm;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 6mm;
+  font-family: monospace;
+  font-size: 9pt;
+  font-weight: bold;
+  margin-right: 1px;
+}
+
+.categories-section { margin: 8mm 0; }
+.categories-section h5 { font-size: 10pt; font-weight: bold; margin: 0 0 3mm 0; }
+.categories-grid { margin-bottom: 5mm; }
+.category-box {
+  display: inline-block;
+  width: 15mm;
+  height: 10mm;
+  border: 2px solid #000;
+  font-weight: bold;
+  font-size: 9pt;
+  text-align: center;
+  line-height: 10mm;
+  background-color: #fff;
+  margin: 1mm;
+}
+.category-box.selected { background-color: #ffd700; font-size: 10pt; }
+
+.documents-section { margin: 8mm 0; }
+.documents-section h5 { font-size: 10pt; font-weight: bold; margin: 0 0 3mm 0; }
+.docs-table { width: 100%; border-collapse: collapse; font-size: 9.5pt; margin-bottom: 5mm; }
+.docs-table th {
+  background-color: #e0e0e0;
+  padding: 2mm 3mm;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+.docs-table td { padding: 2mm 3mm; border: 1px solid #000; }
+.col-po { width: 10%; text-align: center; }
+.col-remark { width: 20%; }
+
+.school-stamp-area {
+  width: 40mm;
+  height: 30mm;
+  border: 1px solid #ccc;
+  padding: 2mm;
+  float: right;
+  margin-left: 5mm;
+  margin-top: 5mm;
+}
+.school-stamp-area p { font-size: 8pt; margin: 1mm 0; }
+.stamp-box {
+  width: 100%;
+  height: 20mm;
+  border: 1px dashed #999;
+  margin-top: 2mm;
+}
+
+.signature-section {
+  margin-top: 15mm;
+  clear: both;
+}
+.sig-container {
+  width: 100%;
+}
+.sig-container table { width: 100%; }
+.sig-container td { width: 45%; text-align: center; vertical-align: bottom; }
+.sig-container td.sig-spacer { width: 10%; }
+.sig-left h6, .sig-right h6 { font-size: 9pt; margin: 0 0 3mm 0; }
+.sig-line {
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  margin: 10mm 0 2mm 0;
+}
+.sig-name { font-size: 8pt; margin: 1mm 0 0 0; }
+
+/* Page 2 — Test tables */
+.page2-header {
+  text-align: center;
+  margin-bottom: 10mm;
+  background-color: #e8f0f8;
+  padding: 5mm;
+  border: 2px solid #003d99;
+}
+.test-section { margin-bottom: 15mm; }
+.test-section h6 { font-size: 10pt; font-weight: bold; margin: 0 0 3mm 0; }
+.test-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+.test-table th {
+  background-color: #e0e0e0;
+  padding: 2mm 3mm;
+  border: 1px solid #000;
+  font-weight: bold;
+}
+.test-table td { padding: 3mm 2mm; border: 1px solid #000; height: 8mm; }
+
+/* ================================================================
+   LIBREZA (Logbook) — Landscape booklet
+   ================================================================ */
+
+.libreza-page { page-break-after: always; }
+.libreza-page:last-child { page-break-after: auto; }
+
+.booklet-halves { width: 100%; }
+.booklet-halves td { width: 48%; vertical-align: top; padding: 5mm; }
+.booklet-halves td.divider { width: 4%; border-left: 1px dashed #ccc; }
+
+.front-cover { text-align: center; }
+.front-cover h3 { font-size: 13pt; font-weight: bold; margin: 0; }
+.front-cover .address { font-size: 9pt; margin-bottom: 8mm; }
+.front-cover h1 { font-size: 18pt; font-weight: bold; margin: 8mm 0; }
+.front-cover .subtitle { font-size: 10pt; margin-bottom: 8mm; }
+
+.candidate-info-box { border: 2px solid #000; padding: 3mm; margin-bottom: 5mm; }
+.info-grid { width: 100%; border-collapse: collapse; font-size: 9pt; }
+.info-grid tr { border: 1px solid #000; }
+.info-grid td { padding: 2mm; vertical-align: middle; }
+.info-grid .label { width: 40%; background-color: #f5f5f5; font-weight: bold; }
+.info-grid .value { width: 60%; }
+.digit-box {
+  display: inline-block;
+  width: 5mm;
+  height: 5mm;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 5mm;
+  font-size: 8pt;
+  font-weight: bold;
+  margin-right: 1px;
+}
+
+.back-cover h5 { font-size: 10pt; font-weight: bold; margin: 3mm 0; }
+.info-table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 3mm 0; }
+.info-table th, .info-table td { border: 1px solid #000; padding: 2mm; }
+.nr-col { width: 10%; text-align: center; font-weight: bold; }
+.info-col { width: 90%; min-height: 5mm; }
+.sig-box-bottom { margin-top: 5mm; font-size: 9pt; }
+.instructor-sig-box { font-size: 9pt; margin-top: 5mm; }
+.instructor-sig-box p { margin: 1mm 0; }
+
+/* Page 2 — Hours tables */
+.hours-table { width: 100%; border-collapse: collapse; font-size: 8pt; margin-bottom: 5mm; }
+.hours-table th {
+  background-color: #e0e0e0;
+  padding: 2mm 1mm;
+  border: 1px solid #000;
+  font-weight: bold;
+  font-size: 7pt;
+}
+.hours-table td { border: 1px solid #000; padding: 2mm 1mm; height: 5mm; }
+.hours-table .nr { width: 5%; text-align: center; }
+.hours-table .topic { width: 20%; }
+
+.theory-section h6, .practical-section h6 {
+  font-size: 10pt;
+  font-weight: bold;
+  margin: 0 0 3mm 0;
+}
+.issued-note { font-size: 8.5pt; margin-bottom: 3mm; }
+.note-section { margin: 3mm 0; font-size: 8.5pt; }
+.note-title { font-weight: bold; margin: 0; }
+.note-text { margin: 1mm 0 0 0; }
+.sig-section { margin-top: 5mm; font-size: 8.5pt; }
+.sig-section p { margin: 1mm 0; }
+
+/* ================================================================
+   KONTRATA (Contract)
+   ================================================================ */
+
+.contract-header { text-align: center; margin-bottom: 15mm; }
+.contract-header h1 { font-size: 24pt; font-weight: bold; margin: 0 0 5mm 0; }
+.contract-subtitle { font-size: 12pt; font-weight: bold; margin: 0 0 5mm 0; }
+.date-line { font-size: 10pt; margin: 0; }
+
+.preamble { margin-bottom: 10mm; font-size: 10pt; line-height: 1.5; }
+.preamble p { margin-bottom: 5mm; text-align: justify; }
+
+.clauses { margin-bottom: 15mm; }
+.clauses h5 { font-size: 11pt; font-weight: bold; margin: 0 0 5mm 0; text-align: center; }
+.clause { font-size: 9.5pt; line-height: 1.6; margin-bottom: 4mm; text-align: justify; }
+
+.signature-block { margin-top: 15mm; }
+.sig-header { font-size: 10pt; font-weight: bold; text-align: center; margin-bottom: 10mm; }
+.signature-table { width: 100%; border-collapse: collapse; }
+.signature-table td { width: 45%; text-align: center; vertical-align: bottom; padding: 3mm; }
+.signature-table td.spacer { width: 10%; }
+.sig-label { font-size: 9pt; margin-bottom: 10mm; }
+.sig-underline { border-bottom: 1px solid #000; height: 1px; margin: 10mm 0 2mm 0; }
+
+/* ================================================================
+   TESTI (Test Result)
+   ================================================================ */
+
+.testi-header { text-align: center; margin-bottom: 10mm; }
+.testi-header h1 { font-size: 20pt; font-weight: bold; margin-bottom: 5mm; }
+.candidate-summary { margin-bottom: 10mm; }
+.candidate-summary table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+.candidate-summary td { padding: 2mm 3mm; border: 1px solid #ccc; }
+.candidate-summary .lbl { width: 30%; background-color: #f5f5f5; font-weight: bold; }
+.candidate-summary .val { width: 70%; }
+
+.test-results-section { margin-bottom: 10mm; }
+.test-results-section h4 { font-size: 11pt; font-weight: bold; margin-bottom: 5mm; }
+
+/* ================================================================
+   VËRTETIMI (Certificate)
+   ================================================================ */
+
+.cert-header {
+  text-align: center;
+  margin-bottom: 10mm;
+  background-color: #e8f0f8;
+  padding: 5mm;
+  border: 2px solid #003d99;
+}
+.cert-header h1 { font-size: 22pt; font-weight: bold; margin: 5mm 0; }
+.cert-body { margin: 10mm 0; font-size: 11pt; line-height: 1.8; }
+.cert-body p { margin-bottom: 5mm; text-align: justify; }
+.cert-detail-table { width: 100%; border-collapse: collapse; margin: 10mm 0; font-size: 10pt; }
+.cert-detail-table td { padding: 3mm 5mm; border: 1px solid #ccc; }
+.cert-detail-table .lbl { width: 40%; background-color: #f5f5f5; font-weight: bold; }
+.cert-detail-table .val { width: 60%; }
+
+/* ================================================================
+   CANDIDATE LIST
+   ================================================================ */
+
+.list-header { text-align: center; margin-bottom: 10mm; }
+.list-header h1 { font-size: 18pt; font-weight: bold; margin-bottom: 3mm; }
+.list-header p { font-size: 10pt; }
+.list-meta { margin-bottom: 5mm; font-size: 9pt; }
+
+.candidate-list-table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+.candidate-list-table th {
+  background-color: #e0e0e0;
+  padding: 2mm 2mm;
+  border: 1px solid #999;
+  font-weight: bold;
+  text-align: left;
+}
+.candidate-list-table td { padding: 2mm 2mm; border: 1px solid #ccc; }
+.candidate-list-table tr:nth-child(even) { background-color: #fafafa; }
+
+.list-footer { margin-top: 10mm; font-size: 9pt; text-align: right; }
+
+/* ================================================================
+   Shared utilities
+   ================================================================ */
+
+.page-break { page-break-before: always; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-bold { font-weight: bold; }
+.mb-5 { margin-bottom: 5mm; }
+.mb-10 { margin-bottom: 10mm; }
+.mt-10 { margin-top: 10mm; }
+.clearfix::after { content: ''; display: table; clear: both; }

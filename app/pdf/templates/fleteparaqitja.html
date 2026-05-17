@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Flet&euml;paraqitja</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 5mm 8mm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8.5pt;
+      line-height: 1.25;
+      color: #000;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .b { font-weight: bold; }
+
+    /* ===== PAGE 1: TOP ROW ===== */
+    .top-row {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .top-row td {
+      vertical-align: middle;
+    }
+    .cat-letter {
+      font-size: 48pt;
+      font-weight: bold;
+      width: 22%;
+      line-height: 1;
+    }
+    .top-center {
+      text-align: center;
+      width: 56%;
+    }
+    .top-center img {
+      height: 45px;
+      width: auto;
+    }
+    .school-top-name {
+      text-align: right;
+      font-size: 16pt;
+      font-weight: bold;
+      font-style: italic;
+      width: 22%;
+      padding-right: 2mm;
+    }
+
+    /* ===== GOVERNMENT HEADER ===== */
+    .gov-header {
+      text-align: center;
+      margin-bottom: 1mm;
+    }
+    .gov-main {
+      font-weight: bold;
+      font-size: 7.5pt;
+      letter-spacing: 0.3pt;
+    }
+    .gov-sub {
+      font-weight: bold;
+      font-size: 7pt;
+    }
+    .gov-ministry {
+      font-size: 6.5pt;
+      line-height: 1.2;
+    }
+    .gov-unit {
+      font-weight: bold;
+      font-size: 8pt;
+      margin-top: 1mm;
+    }
+
+    /* ===== FORM TITLE ===== */
+    .form-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 7.5pt;
+      margin: 1mm 0 1mm 0;
+      line-height: 1.3;
+    }
+    .form-title-sub {
+      font-weight: normal;
+      font-size: 7pt;
+    }
+
+    /* ===== FORM ID ROW ===== */
+    .form-id-row {
+      width: 100%;
+      margin-bottom: 1mm;
+      font-size: 8pt;
+    }
+    .form-id-row td {
+      vertical-align: middle;
+    }
+    .city-box {
+      display: inline-block;
+      border: 2px solid #000;
+      padding: 1mm 3mm;
+      font-weight: bold;
+      background-color: #fff;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-hdr {
+      font-weight: bold;
+      font-size: 7.5pt;
+      padding: 1mm 0;
+      margin-bottom: 0;
+    }
+
+    /* ===== PERSONAL DATA TABLE ===== */
+    .data-table {
+      width: 100%;
+      font-size: 8pt;
+      margin-bottom: 1mm;
+    }
+    .data-table tr {
+      border: 1px solid #000;
+    }
+    .data-table .lbl {
+      width: 48%;
+      padding: 1mm 3mm;
+      font-style: italic;
+      font-size: 7.5pt;
+      vertical-align: middle;
+      border: 1px solid #000;
+    }
+    .data-table .val {
+      width: 52%;
+      padding: 1mm 3mm;
+      font-weight: bold;
+      font-size: 8.5pt;
+      vertical-align: middle;
+      border: 1px solid #000;
+    }
+
+    /* ===== CATEGORIES ===== */
+    .categories-section {
+      margin-bottom: 1mm;
+    }
+    .cat-grid {
+      text-align: center;
+      margin: 1mm 0;
+    }
+    .cat-box {
+      display: inline-block;
+      width: 14.5mm;
+      height: 7mm;
+      border: 1.5px solid #000;
+      font-weight: bold;
+      font-size: 8pt;
+      text-align: center;
+      line-height: 7mm;
+      background-color: #fff;
+      margin: 0 0.2mm;
+    }
+    .cat-box.selected {
+      border-width: 2.5px;
+      font-size: 10pt;
+    }
+    .cat-note {
+      text-align: center;
+      font-size: 7pt;
+      font-style: italic;
+      margin-top: 0.5mm;
+    }
+
+    /* ===== DOCUMENTS TABLE ===== */
+    .docs-section {
+      margin-bottom: 1mm;
+    }
+    .docs-table {
+      width: 100%;
+      font-size: 7.5pt;
+    }
+    .docs-table th {
+      padding: 1.5mm 2mm;
+      border: 1px solid #000;
+      font-weight: bold;
+      font-size: 7pt;
+      text-align: left;
+    }
+    .docs-table td {
+      padding: 1.5mm 2mm;
+      border: 1px solid #000;
+      font-size: 7.5pt;
+      vertical-align: middle;
+    }
+    .docs-po {
+      width: 10%;
+      text-align: center;
+    }
+    .docs-remark {
+      width: 25%;
+    }
+
+    /* ===== SCHOOL STAMP TEXT ===== */
+    .school-stamp {
+      font-size: 13pt;
+      font-weight: bold;
+      font-style: italic;
+      text-align: right;
+      padding-right: 2mm;
+      padding-top: 1mm;
+    }
+
+    /* ===== PARAQITJA / SIGNATURE SECTION ===== */
+    .paraqitja-hdr {
+      font-weight: bold;
+      font-size: 7.5pt;
+      padding: 1mm 0;
+    }
+    .sig-table {
+      width: 100%;
+      font-size: 7pt;
+      margin-bottom: 1mm;
+    }
+    .sig-table td {
+      border: 1px solid #000;
+      padding: 1.5mm 3mm;
+      vertical-align: top;
+    }
+    .sig-table .sig-left {
+      width: 50%;
+    }
+    .sig-table .sig-right {
+      width: 50%;
+    }
+    .sig-lbl {
+      font-size: 6.5pt;
+      line-height: 1.25;
+      margin-bottom: 3mm;
+    }
+    .sig-name {
+      font-size: 7.5pt;
+      font-weight: bold;
+      margin-top: 3mm;
+    }
+
+    /* ===== PAGE 1 BOTTOM: SECOND GOV HEADER + EXAM SLIP ===== */
+    .p1-bottom-gov {
+      text-align: center;
+      margin-top: 1mm;
+      margin-bottom: 0.5mm;
+      background-color: #e8f0f8;
+      border: 1.5px solid #003d99;
+      padding: 2mm 4mm;
+    }
+    .p1-bottom-gov img {
+      height: 28px;
+      width: auto;
+      margin-bottom: 0.5mm;
+    }
+    .p1-bottom-gov .gov-main { font-size: 7pt; }
+    .p1-bottom-gov .gov-sub { font-size: 6.5pt; }
+    .p1-bottom-gov .gov-ministry { font-size: 5.5pt; }
+    .p1-bottom-gov .gov-unit { font-size: 7pt; }
+
+    .p1-slip-title {
+      text-align: center;
+      font-size: 7pt;
+      margin-bottom: 1mm;
+    }
+
+    .p1-slip-row {
+      width: 100%;
+      font-size: 7pt;
+      margin-bottom: 1mm;
+    }
+    .p1-slip-row td {
+      vertical-align: middle;
+    }
+
+    .p1-slip-sig {
+      width: 100%;
+      font-size: 6.5pt;
+    }
+    .p1-slip-sig td {
+      border: 1px solid #000;
+      padding: 1.5mm 2mm;
+      vertical-align: top;
+    }
+    .p1-slip-sig .slbl {
+      font-size: 6pt;
+      line-height: 1.2;
+      margin-bottom: 1mm;
+    }
+    .p1-slip-sig .sname {
+      font-weight: bold;
+      font-size: 7pt;
+      margin-top: 1.5mm;
+    }
+
+    /* ===== PAGE 2: TEST TABLES ===== */
+    .page2-border {
+      border: 1px solid #000;
+      padding: 2mm;
+    }
+
+    .test-section {
+      margin-bottom: 3mm;
+    }
+    .test-title {
+      font-size: 8pt;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1mm;
+    }
+    .test-table {
+      width: 100%;
+      font-size: 7pt;
+    }
+    .test-table th {
+      padding: 1.5mm 1mm;
+      border: 1px solid #000;
+      font-weight: bold;
+      text-align: center;
+      font-size: 6.5pt;
+      line-height: 1.15;
+    }
+    .test-table td {
+      border: 1px solid #000;
+      padding: 1.5mm 1mm;
+      height: 6mm;
+    }
+
+    /* ===== DASHED SEPARATOR ===== */
+    .dashed-sep {
+      border: none;
+      border-top: 2px dashed #999;
+      margin: 3mm 0;
+    }
+
+    /* ===== BOTTOM SLIP (PAGE 2) ===== */
+    .bottom-slip-title {
+      font-size: 7.5pt;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.5mm;
+    }
+    .bottom-slip-box {
+      border: 1px solid #000;
+      padding: 2mm;
+    }
+    .bottom-cols {
+      width: 100%;
+    }
+    .bottom-cols td {
+      width: 50%;
+      vertical-align: top;
+      padding: 0 1mm;
+    }
+    .bottom-title {
+      font-size: 7pt;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1mm;
+    }
+    .bottom-table {
+      width: 100%;
+      font-size: 6.5pt;
+    }
+    .bottom-table th {
+      padding: 1mm;
+      border: 1px solid #000;
+      font-weight: bold;
+      text-align: center;
+      font-size: 6pt;
+      line-height: 1.15;
+    }
+    .bottom-table td {
+      border: 1px solid #000;
+      padding: 1mm;
+      height: 4.5mm;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+
+<!-- TOP ROW: Category letter + Coat of Arms + School name -->
+<table class="top-row" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="cat-letter">{{ category.code }}</td>
+    <td class="top-center">
+      <img src="file://{{ asset_dir }}/Emblem_of_the_Republic_of_Kosovo.svg.png" alt="Stema e Kosov&euml;s">
+    </td>
+    <td class="school-top-name">{{ tenant.name }}</td>
+  </tr>
+</table>
+
+<!-- GOVERNMENT HEADER (no background, plain text) -->
+<div class="gov-header">
+  <p class="gov-main">REPUBLIKA E KOSOV&Euml;S &nbsp;/ &nbsp;REPUBLIKA KOSOVA &nbsp;/ &nbsp;REPUBLIC OF KOSOVO</p>
+  <p class="gov-sub">QEVERIA E KOSOV&Euml;S / VLADA KOSOVA / GOVERNMENT OF KOSOVA</p>
+  <p class="gov-ministry">MINISTRIA E MJEDISIT,PLANIFIKIMIT HAP&Euml;SINOR DHE INFRASTRUKTUR&Euml;S/ MINISTARSTVO<br>
+  ŽIVOTNE SREDINE, PROSTORNOG PLANIRANJA I INFRASTRUKTURE/ MINISTRY OF<br>
+  ENVIRONMENT, SPATIAL PLANNING AND INFRASTRUCTURE</p>
+  <p class="gov-unit">NJ&Euml;SIA E TESTIMIT P&Euml;R PATENT SHOFER &nbsp;<span style="font-weight: bold;">{{ tenant.city|safe_str|upper }}</span></p>
+</div>
+
+<!-- FORM TITLE -->
+<div class="form-title">
+  FLET&Euml;PARAQITJE P&Euml;R PROVIM P&Euml;R SHOFER&Euml; / PRIJAVA ZA POLAGANJE VOZA&Ccedil;KOG DOZVOLE<br>
+  <span class="form-title-sub">DRIVING EXAM RESERVATION FORM</span>
+</div>
+
+<!-- FORM ID ROW -->
+<table class="form-id-row" cellspacing="0" cellpadding="0">
+  <tr>
+    <td style="width: 50%; text-align: left;">
+      <strong>FORMA {{ category.code }}</strong> &nbsp;NJPSH/JVD/DLU: &nbsp;<span class="city-box">{{ tenant.city|safe_str|upper }}</span>
+    </td>
+    <td style="width: 50%; text-align: right;">
+      Nr. Regj./ Br. Reg./ Lbook.no.
+    </td>
+  </tr>
+</table>
+
+<!-- PERSONAL DATA -->
+<div class="section-hdr">T&Euml; DH&Euml;NAT E PARAQIT&Euml;SIT / PODACI PODNOSIOCA / APLICANT'S DETAILS</div>
+<table class="data-table" cellspacing="0">
+  <tr>
+    <td class="lbl">1. <em>Mbiemri / Prezime / Family Name:</em></td>
+    <td class="val">{{ candidate.last_name|upper }}</td>
+  </tr>
+  <tr>
+    <td class="lbl">2. <em>Emri i babait / O&ccedil;evo ime / Father's Name:</em></td>
+    <td class="val">{{ candidate.parent_name|safe_str|upper }}</td>
+  </tr>
+  <tr>
+    <td class="lbl">3. <em>Emri / Ime / First Name:</em></td>
+    <td class="val">{{ candidate.first_name|upper }}</td>
+  </tr>
+  <tr>
+    <td class="lbl">4. <em>Data e lindjes / Datum rodjenja / Date of Birth:</em></td>
+    <td class="val">{{ candidate.date_of_birth|format_date }}</td>
+  </tr>
+  <tr>
+    <td class="lbl">5. <em>Vendi i lindjes / Mesto rodjenja / Place of birth:</em></td>
+    <td class="val">{% if candidate.birth_place %}{{ candidate.birth_place.name|upper }}{% elif candidate.birth_municipality %}{{ candidate.birth_municipality.name|upper }}{% else %}{{ candidate.birth_place_foreign|safe_str|upper }}{% endif %}</td>
+  </tr>
+  <tr>
+    <td class="lbl">6. <em>Komuna / Opština / Municipality:</em></td>
+    <td class="val">{% if candidate.birth_municipality %}{{ candidate.birth_municipality.name|upper }}{% else %}{{ candidate.birth_municipality_foreign|safe_str|upper }}{% endif %}</td>
+  </tr>
+  <tr>
+    <td class="lbl">7. <em>Numri personal / ali&ccedil;ni broj / Personal number</em></td>
+    <td class="val">{{ candidate.personal_number|safe_str }}</td>
+  </tr>
+</table>
+
+<!-- CATEGORIES GRID -->
+<div class="categories-section">
+  <div class="section-hdr">KATEGORIT&Euml; P&Euml;R PATENT SHOFER / KATEGORIJE ZA VOZA&Ccedil;KU DOZVOLU / DRIVING LICENSE CATEGORIES</div>
+  <div class="cat-grid">
+    {% set cat_codes = ['A1', 'A2', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE', 'M', 'T'] %}
+    {% for cc in cat_codes %}
+      <span class="cat-box {% if cc == category.code %}selected{% endif %}">{{ cc }}</span>
+    {% endfor %}
+  </div>
+  <div class="cat-note">Sh&euml;noni kategorin&euml; / Obeležiti kategoriju / Mark category</div>
+</div>
+
+<!-- DOCUMENTS SECTION -->
+<div class="docs-section">
+  <div class="section-hdr">DOKUMENTET E BASHKANGJITURA / PRILOŽENI DOKUMENTI / ATTACHED DOCUMENTS</div>
+
+  <table class="docs-table" cellspacing="0">
+    <tr>
+      <th style="text-align: left;">9. Dokumentet / Dokumentacija / Documents</th>
+      <th class="docs-po">Po/Jes/Yes</th>
+      <th class="docs-remark">V&euml;rejtje/Primedbe/Remarks</th>
+    </tr>
+    <tr>
+      <td>V&euml;rtetimi i Auto Shkoll&euml;s/ Potvrda Auto škole/ Driving school certificate</td>
+      <td class="docs-po"></td>
+      <td class="docs-remark" rowspan="4" style="vertical-align: middle;">
+        <div class="school-stamp">{{ tenant.name }}</div>
+      </td>
+    </tr>
+    <tr>
+      <td>&Ccedil;ertifikata mjeksore/ Lekarsko uverenje/ Medical certificate</td>
+      <td class="docs-po"></td>
+    </tr>
+    <tr>
+      <td>&Ccedil;ertifikata e kryqit t&euml; kuq/ Uverenje crvenog krsta/ Red Cross certificate</td>
+      <td class="docs-po"></td>
+    </tr>
+    <tr>
+      <td>Fotokopja e let&euml;rnjoftimit t&euml; Kosov&euml;s/ fotokopija Kosovske li&ccedil;na karta/<br>Photocopy of Kosovo ID Card</td>
+      <td class="docs-po"></td>
+    </tr>
+  </table>
+</div>
+
+<!-- PARAQITJA / SIGNATURE SECTION -->
+<div class="paraqitja-hdr">PARAQITJA / PRIJAVA / RESERVATION</div>
+<table class="sig-table" cellspacing="0">
+  <tr>
+    <td class="sig-left">
+      <div class="sig-lbl">10. N&euml;nshkrimi i paraqit&euml;sit / Data / Potpis<br>podnosioca / Datum / Aplicant's Signature / Date</div>
+      <div class="sig-name">{{ candidate.first_name|upper }} {{ candidate.last_name|upper }}</div>
+    </td>
+    <td class="sig-right">
+      <div class="sig-lbl">11. N&euml;nshkrimi i n&euml;pun&euml;sit zyrtar / Data / Potpis<br>službenog lica / Datum / Officer's Signature /<br>Date</div>
+    </td>
+  </tr>
+</table>
+
+<!-- ===== PAGE 1 BOTTOM: SECOND GOVERNMENT HEADER + EXAM SLIP ===== -->
+<div class="p1-bottom-gov">
+  <img src="file://{{ asset_dir }}/Emblem_of_the_Republic_of_Kosovo.svg.png" alt="Stema">
+  <p class="gov-main" style="font-size: 7pt;">Republika e Kosov&euml;s / Republika Kosova / Republik of Kosovo</p>
+  <p class="gov-sub" style="font-size: 6.5pt;">Qeveria e Kosov&euml;s / Vlada Kosova / Government of Kosova</p>
+  <p class="gov-ministry" style="font-size: 5.5pt;">Ministria e Mjedisit,Planifikimit Hapsinor dhe Infrastruktur&euml;s / Ministarstvo Životne Serdine, Prostornog Planifikanja I Infrastrukture/<br>Ministry of Environment, Spatial Planning snd Infrastructure</p>
+  <p class="gov-unit" style="font-size: 7pt;">NJ&Euml;SIA E TESTIMIT P&Euml;R PATENT SHOFER {{ tenant.city|safe_str|upper }}</p>
+</div>
+
+<div class="p1-slip-title">
+  Flet&euml;za p&euml;r paraqitjen e provimit p&euml;r shofer / Listi&cacute; za prijavljeni voza&ccedil;ki ispit /Driving exam reservation slip
+</div>
+
+<table class="p1-slip-row" cellspacing="0">
+  <tr>
+    <td style="width: 40%; text-align: left; border: 1px solid #000; padding: 1mm 2mm;">
+      <strong>FORMA {{ category.code }}</strong> NJPSH/JVD/DLU: {{ tenant.city|safe_str|upper }}
+    </td>
+    <td style="width: 30%; text-align: center; border: 1px solid #000; padding: 1mm 2mm;">
+      Nr. Regj./ Br. Reg./ Lbook.no
+    </td>
+    <td style="width: 30%; text-align: right; border: 1px solid #000; padding: 1mm 2mm;">
+      Dat.CS-016
+    </td>
+  </tr>
+</table>
+
+<table class="p1-slip-sig" cellspacing="0">
+  <tr>
+    <td style="width: 35%;">
+      <div class="slbl">N&euml;nshkrimi i paraqit&euml;sit / Data / Potpis podnosioca<br>/ Datum / Aplicant's Signature / Date</div>
+      <div class="sname">{{ candidate.first_name|upper }} {{ candidate.last_name|upper }}</div>
+    </td>
+    <td style="width: 15%; text-align: center;">
+      <div class="slbl">Telefoni</div>
+      <div class="sname">{{ candidate.phone|safe_str }}</div>
+    </td>
+    <td style="width: 50%;">
+      <div class="slbl">N&euml;nshkrimi i n&euml;pun&euml;sit zyrtar / Data / Potpis<br>službenog lica / Datum / Officer's Signature / Date</div>
+    </td>
+  </tr>
+</table>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page-break"></div>
+
+<!-- Page 2 is all inside a border -->
+<div class="page2-border">
+
+<!-- Theory Test Table -->
+<div class="test-section">
+  <div class="test-title">Testi teorik / Teoretski test / Theory Test</div>
+  <table class="test-table" cellspacing="0">
+    <tr>
+      <th style="width: 16%;">Data e provimit<br>Datum polaganja<br>Date of Examination</th>
+      <th style="width: 17%;">N&euml;nshk. i n&euml;p. zyrtar<br>Potpis ovlaš&ccedil;enog<br>Officer Signature</th>
+      <th style="width: 11%;">Poenat<br>Poeni<br>Points</th>
+      <th style="width: 17%;">Kaloi / D&euml;shtoi<br>Položio / Nije položio<br>Pass / Fall</th>
+      <th style="width: 21%;">Emri i pyet&euml;sit<br>Ime ispitiva&ccedil;a<br>Examiner's name</th>
+      <th style="width: 18%;">V&euml;rejtjet<br>Primedbe<br>Remarks</th>
+    </tr>
+    {% for i in range(12) %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<!-- Practical Test Table -->
+<div class="test-section">
+  <div class="test-title">Testi praktik / Prakti&ccedil;ni test / Test</div>
+  <table class="test-table" cellspacing="0">
+    <tr>
+      <th style="width: 16%;">Data e provimit<br>Datum polaganja<br>Date of Examination</th>
+      <th style="width: 19%;">N&euml;nshk. i n&euml;p. zyrtar<br>Potpis ovlaš&ccedil;enog<br>Officer Signature</th>
+      <th style="width: 17%;">Kaloi / D&euml;shtoi<br>Položio / Nije položio<br>Pass / Fall</th>
+      <th style="width: 24%;">Emri i pyet&euml;sit<br>Ime ispitiva&ccedil;a<br>Examiner's name</th>
+      <th style="width: 24%;">V&euml;rejtjet<br>Primedbe<br>Remarks</th>
+    </tr>
+    {% for i in range(8) %}
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+</div><!-- end page2-border -->
+
+<!-- Dashed Separator -->
+<hr class="dashed-sep">
+
+<!-- Bottom Exam Reservation Slip -->
+<div class="bottom-slip-box">
+  <div class="bottom-slip-title">Flet&euml;za p&euml;r paraqitjen e provimit p&euml;r shofer / Listi&cacute; za prijavljeni voza&ccedil;ki ispit / Driving Exam Reservation Slip</div>
+
+  <table class="bottom-cols" cellspacing="0" cellpadding="0">
+    <tr>
+      <td>
+        <div class="bottom-title">Testi teorik / Teoretski test / Theory Test</div>
+        <table class="bottom-table" cellspacing="0">
+          <tr>
+            <th style="width: 33%;">Data e provimit<br>Datum polaganja<br>Date of Examination</th>
+            <th style="width: 34%;">N&euml;nshk. i n&euml;p. zyrtar<br>Potpis ovlaš&ccedil;enog<br>Officer Signature</th>
+            <th style="width: 33%;">V&euml;rejtjet<br>Primedbe<br>Remarks</th>
+          </tr>
+          {% for i in range(10) %}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </td>
+      <td>
+        <div class="bottom-title">Testi praktik / Prakti&ccedil;ni test / Test</div>
+        <table class="bottom-table" cellspacing="0">
+          <tr>
+            <th style="width: 33%;">Data e provimit<br>Datum polaganja<br>Date of Examination</th>
+            <th style="width: 34%;">N&euml;nshk. i n&euml;p. zyrtar<br>Potpis ovlaš&ccedil;enog<br>Officer Signature</th>
+            <th style="width: 33%;">V&euml;rejtjet<br>Primedbe<br>Remarks</th>
+          </tr>
+          {% for i in range(10) %}
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          {% endfor %}
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

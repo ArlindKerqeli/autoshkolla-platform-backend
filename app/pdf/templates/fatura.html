@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Fatura</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      width: 100%;
+      margin-bottom: 10mm;
+    }
+
+    .header td {
+      vertical-align: top;
+      padding: 0;
+    }
+
+    .header-left {
+      width: 35%;
+      text-align: left;
+    }
+
+    .school-name {
+      font-style: italic;
+      font-size: 13pt;
+      font-weight: normal;
+      margin-bottom: 2mm;
+    }
+
+    .invoice-title {
+      font-size: 30pt;
+      font-weight: bold;
+      color: #CC0000;
+      line-height: 1;
+    }
+
+    .header-center {
+      width: 30%;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .header-logo {
+      height: 28mm;
+      width: auto;
+    }
+
+    .header-right {
+      width: 35%;
+      text-align: right;
+      font-size: 10pt;
+      vertical-align: top;
+      padding-top: 2mm;
+    }
+
+    .header-right p {
+      margin: 2mm 0;
+    }
+
+    /* ===== BUSINESS INFO ===== */
+    .business-info {
+      width: 100%;
+      margin-bottom: 8mm;
+      border: 1px solid #999;
+      border-collapse: collapse;
+    }
+
+    .bi-left, .bi-right {
+      vertical-align: top;
+      border: 1px solid #999;
+    }
+
+    .info-header {
+      background-color: #E0E0E0;
+      padding: 2mm 4mm;
+      font-weight: bold;
+      font-size: 10pt;
+    }
+
+    .info-body {
+      padding: 3mm 4mm;
+      font-size: 9.5pt;
+      line-height: 2.2;
+    }
+
+    .detail-tbl {
+      width: 100%;
+      border-spacing: 2mm 0;
+    }
+
+    .detail-tbl td {
+      padding: 0;
+      border: none !important;
+      font-size: 9.5pt;
+    }
+
+    .dl { text-align: left; white-space: nowrap; }
+    .dv { text-align: left; }
+
+
+    /* ===== SERVICE TABLE ===== */
+    .service-table {
+      width: 100%;
+      margin-bottom: 5mm;
+      border-collapse: collapse;
+    }
+
+    .service-table thead th {
+      background-color: #E0E0E0;
+      border: 1px solid #999;
+      padding: 2.5mm 2mm;
+      font-size: 9pt;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .service-table tbody td {
+      border: 1px solid #999;
+      padding: 3mm 2mm;
+      font-size: 9.5pt;
+    }
+
+    .col-nr { width: 5%; text-align: center; }
+    .col-desc { width: 35%; text-align: left; }
+    .col-unit { width: 10%; text-align: center; }
+    .col-qty { width: 8%; text-align: center; }
+    .col-price { width: 14%; text-align: right; }
+    .col-vat { width: 14%; text-align: right; }
+    .col-total { width: 14%; text-align: right; }
+
+    /* ===== TOTALS ===== */
+    .totals-wrapper {
+      width: 100%;
+      margin-bottom: 10mm;
+    }
+
+    .totals-table {
+      margin-left: auto;
+      margin-right: 0;
+      width: 50%;
+      border-collapse: collapse;
+      font-size: 10pt;
+    }
+
+    .totals-table td {
+      padding: 2mm 4mm;
+      border: 1px solid #ccc;
+    }
+
+    .totals-label {
+      text-align: right;
+      background-color: #f5f5f5;
+      width: 55%;
+    }
+
+    .totals-value {
+      text-align: right;
+      width: 45%;
+    }
+
+    .totals-final td {
+      font-weight: bold;
+      font-size: 10.5pt;
+      background-color: #f0f0f0;
+    }
+
+    /* ===== BANK ===== */
+    .bank-section {
+      margin-bottom: 12mm;
+      font-size: 10pt;
+    }
+
+    .bank-header {
+      font-weight: bold;
+      margin-bottom: 2mm;
+    }
+
+    .bank-hr {
+      border: none;
+      border-top: 1px solid #000;
+      margin: 2mm 0;
+    }
+
+    .bank-detail {
+      margin-top: 2mm;
+    }
+
+    /* ===== SIGNATURES ===== */
+    .signature-table {
+      width: 100%;
+      margin-top: 15mm;
+    }
+
+    .signature-table td {
+      width: 50%;
+      text-align: center;
+      vertical-align: top;
+      padding: 0 10mm;
+    }
+
+    .sig-name {
+      font-weight: bold;
+      font-size: 10pt;
+      margin-bottom: 15mm;
+    }
+
+    .sig-line {
+      border-top: 1px solid #000;
+      margin: 0 auto;
+      width: 85%;
+    }
+
+    .sig-desc {
+      font-size: 9pt;
+      margin-top: 3mm;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<table class="header" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="header-left">
+      <div class="school-name">{{ tenant.name }}</div>
+      <div class="invoice-title">FATUR&Euml;</div>
+    </td>
+    <td class="header-center">
+      <img src="file://{{ asset_dir }}/school_logo_rina.png" alt="Logo" class="header-logo">
+    </td>
+    <td class="header-right">
+      <p>Nr.Fatur&euml;s: <strong>{{ invoice_number }}</strong></p>
+      <p>Data e Fatur&euml;s: <strong>{{ invoice_date|format_date }}</strong></p>
+    </td>
+  </tr>
+</table>
+
+<!-- BUSINESS INFO -->
+<table class="business-info" cellspacing="0" cellpadding="0">
+  <tr>
+    <td class="bi-left" style="width: 55%;">
+      <div class="info-header">Biznesi: {{ tenant.name }}</div>
+      <div class="info-body">
+        <table class="detail-tbl">
+          <tr><td class="dl">Adresa: rr.</td><td class="dv">{{ tenant.address|safe_str }}</td></tr>
+          <tr><td class="dl">Nr. unik identifikues:</td><td class="dv">{{ tenant.nui|safe_str }}</td></tr>
+          <tr><td class="dl">Nr.TVSH-s&euml;:</td><td class="dv">{{ tenant.tvsh|safe_str }}</td></tr>
+          <tr><td class="dl">Tel:</td><td class="dv">{{ tenant.phone|safe_str }}</td></tr>
+          <tr><td class="dl">Email:</td><td class="dv">{{ tenant.email|safe_str }}</td></tr>
+        </table>
+      </div>
+    </td>
+    <td class="bi-right" style="width: 45%;">
+      <div class="info-header">Kandidati</div>
+      <div class="info-body">
+        <p>Faturuar p&euml;r : <strong>{{ candidate.first_name|upper }} {{ candidate.last_name|upper }}</strong></p>
+        <p>Adresa : <strong>{% if candidate.residence_municipality %}{{ candidate.residence_municipality.name|upper }}{% endif %}</strong></p>
+        <p>Nr. Personal: <strong>{{ candidate.personal_number }}</strong></p>
+        <p>Nr.regj. Kandidatit : <strong>{{ candidate.protocol_number|safe_str }}</strong></p>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<!-- SERVICE TABLE -->
+<table class="service-table" cellspacing="0">
+  <thead>
+    <tr>
+      <th class="col-nr">Nr</th>
+      <th class="col-desc">P&euml;rshkrimi i Sh&euml;rbimit</th>
+      <th class="col-unit">Nj&euml;sia</th>
+      <th class="col-qty">Sasia</th>
+      <th class="col-price">&Ccedil;mimi Pa Tvsh</th>
+      <th class="col-vat">TVSH</th>
+      <th class="col-total">&Ccedil;mimi Me Tvsh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="col-nr">1</td>
+      <td class="col-desc">Regjistrimi n&euml; Autoshkoll&euml; p&euml;r Kategorin&euml;n {{ category.code }}</td>
+      <td class="col-unit">Euro</td>
+      <td class="col-qty">1</td>
+      <td class="col-price">{{ price_no_vat|format_currency }} &euro;</td>
+      <td class="col-vat">{{ vat_amount|format_currency }} &euro;</td>
+      <td class="col-total">{{ price|format_currency }} &euro;</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- TOTALS -->
+<div class="totals-wrapper">
+  <table class="totals-table" cellspacing="0">
+    <tr>
+      <td class="totals-label">Vlera pa TVSH:</td>
+      <td class="totals-value">{{ price_no_vat|format_currency }} &euro;</td>
+    </tr>
+    <tr>
+      <td class="totals-label">Vlera e TVSH-s&euml;:</td>
+      <td class="totals-value">{{ vat_amount|format_currency }} &euro;</td>
+    </tr>
+    <tr>
+      <td class="totals-label">Vlera me TVSH:</td>
+      <td class="totals-value">{{ price|format_currency }} &euro;</td>
+    </tr>
+    <tr class="totals-final">
+      <td class="totals-label" style="background-color: #f0f0f0;">TOTALI P&Euml;R PAGESE :</td>
+      <td class="totals-value" style="background-color: #f0f0f0;">{{ price|format_currency }} &euro;</td>
+    </tr>
+    {% if total_paid is defined %}
+    <tr>
+      <td class="totals-label">Totali i paguar:</td>
+      <td class="totals-value">{{ total_paid|format_currency }} &euro;</td>
+    </tr>
+    <tr class="totals-final">
+      <td class="totals-label" style="background-color: #fff3f3;">Borxhi i mbetur:</td>
+      <td class="totals-value" style="background-color: #fff3f3; color: {% if remaining > 0 %}#CC0000{% else %}#006600{% endif %};">{{ remaining|format_currency }} &euro;</td>
+    </tr>
+    {% endif %}
+  </table>
+</div>
+
+<!-- BANK DETAILS -->
+<div class="bank-section">
+  <div class="bank-header">Pagesa b&euml;het n&euml; k&euml;t&euml; llogari bankare</div>
+  <hr class="bank-hr">
+  <div class="bank-detail">{{ tenant.bank_name|safe_str }}&nbsp;&nbsp;{{ tenant.bank_account|safe_str }}</div>
+</div>
+
+<!-- SIGNATURES -->
+<table class="signature-table" cellspacing="0">
+  <tr>
+    <td>
+      <div class="sig-name">{{ tenant.name|upper }}</div>
+      <div class="sig-line"></div>
+      <div class="sig-desc">N&euml;nshkrimi dhe vula e autoshkoll&euml;s</div>
+    </td>
+    <td>
+      <div class="sig-name">{{ candidate.first_name|upper }} {{ candidate.last_name|upper }}</div>
+      <div class="sig-line"></div>
+      <div class="sig-desc">N&euml;nshkrim i kandidatit</div>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

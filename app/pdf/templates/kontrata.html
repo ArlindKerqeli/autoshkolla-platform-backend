@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Kontrata</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 8mm 12mm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      color: #000;
+    }
+
+    .page-border {
+      border: 2px solid #000;
+      padding: 6mm 8mm 5mm 8mm;
+    }
+
+    p {
+      margin: 0 0 1mm 0;
+      text-align: justify;
+    }
+
+    .title-section {
+      text-align: center;
+      margin-bottom: 3mm;
+    }
+
+    .title-main {
+      font-size: 20pt;
+      font-weight: bold;
+    }
+
+    .title-sub {
+      font-size: 12pt;
+      font-weight: bold;
+      margin-bottom: 2mm;
+    }
+
+    .bu {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .b {
+      font-weight: bold;
+    }
+
+    .clause-num {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10pt;
+      margin: 2.5mm 0 1mm 0;
+    }
+
+    .clause {
+      font-size: 9.5pt;
+      line-height: 1.45;
+      margin-bottom: 0;
+      text-align: justify;
+    }
+
+    .sig-header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 10pt;
+      margin-top: 4mm;
+      margin-bottom: 2mm;
+    }
+
+    .sig-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .sig-table td {
+      vertical-align: top;
+      padding: 0;
+      font-size: 9.5pt;
+    }
+
+    .sig-left {
+      text-align: left;
+      width: 40%;
+    }
+
+    .sig-center {
+      text-align: center;
+      width: 20%;
+    }
+
+    .sig-right {
+      text-align: right;
+      width: 40%;
+    }
+
+    .sig-label {
+      font-weight: bold;
+      font-size: 10pt;
+      margin-bottom: 2mm;
+    }
+
+    .sig-line-left {
+      border-bottom: 1px solid #000;
+      width: 60%;
+      height: 12mm;
+    }
+
+    .sig-line-right {
+      border-bottom: 1px solid #000;
+      width: 60%;
+      margin-left: auto;
+      height: 12mm;
+    }
+
+    .sig-name {
+      font-weight: bold;
+      font-size: 9.5pt;
+      margin-top: 1mm;
+    }
+
+    .sig-vv {
+      font-size: 9pt;
+      text-align: center;
+      margin-top: 1mm;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-border">
+
+<!-- TITLE -->
+<div class="title-section">
+  <div class="title-main">KONTRAT&Euml;</div>
+  <div class="title-sub">P&Euml;R AFT&Euml;SIMIN E KANDIDATIT P&Euml;R SHOFER</div>
+</div>
+
+<!-- DATE -->
+<p style="margin-bottom: 2mm;">
+  E hartuar m&euml; da.<span class="b">{{ contract_date|format_date }}</span>
+</p>
+
+<!-- OPENING -->
+<p style="margin-bottom: 2mm;">
+  n&euml; lokalet e <span class="bu">{{ tenant.name }}</span> me seli n&euml; <span class="b">{{ tenant.city|safe_str }}</span> rr. <span class="bu">{{ tenant.address|safe_str }}</span> n&euml; nj&euml;ren an&euml;
+</p>
+
+<p style="margin-bottom: 2mm;">
+  Kandidati: &nbsp;<span class="bu">{{ candidate.first_name|upper }} ( {% if candidate.parent_name %}{{ candidate.parent_name|safe_str|upper }}{% endif %} ) {{ candidate.last_name|upper }}</span> nga <span class="bu">{{ candidate_residence }}</span> - <span class="bu">{{ candidate_residence }}</span> n&euml; an&euml;n tjet&euml;r si
+</p>
+
+<!-- CLAUSE I -->
+<div class="clause-num">I</div>
+<p class="clause">
+  Objekti i kontrat&euml;s &euml;sht&euml;: Aft&euml;simi i kandidatit p&euml;r shofer t&euml; kategoris&euml; <span class="b">{{ category.code }}</span>.
+</p>
+
+<!-- CLAUSE II -->
+<div class="clause-num">II</div>
+<p class="clause">
+  Autoshkolla &euml;sht&euml; e obliguar t&euml; aft&euml;soj kandidatin p&euml;r shofer nga pjesa teorike dhe praktike sipas Udh&euml;zimit Administrativ Nr. 13/2017. Planprogramin e aft&euml;simit t&euml; kandidat&euml;ve p&euml;r shofer dhe ligjin Nr. 05/L-064 p&euml;r paten shofer
+</p>
+
+<!-- CLAUSE III -->
+<div class="clause-num">III</div>
+<p class="clause">
+  Ligj&euml;ruesi dhe Shofer Instruktori jan&euml; t&euml; obliguar t&euml; aft&euml;sojn&euml; kandidatin p&euml;r shofer nga pjesa teorike dhe praktike konform planprogramit mbi aft&euml;simin e kandidat&euml;ve p&euml;r shofer parapar&euml; n&euml; shtojc&euml;n t&euml; udh&euml;zimiz administrativ Nr. 13/2017 dhe neniz 41 paragrafi 1 dhe 2 ligjit nr. 05/L-064 p&euml;r patent shofe.
+</p>
+
+<!-- CLAUSE IV -->
+<div class="clause-num">IV</div>
+<p class="clause">
+  Kandidati &euml;sht&euml; i obliguar t&euml; vijoj me rregull m&euml;simin teorik dhe praktik
+</p>
+
+<!-- CLAUSE V -->
+<div class="clause-num">V</div>
+<p class="clause">
+  Autoshkolla obligohet q&euml; kandidatit ti siguroi kushtet p&euml;r vijim t&euml; rregullt t&euml; m&euml;simit teorik-praktik parapar&euml; me nenin 4, 5 dhe 8 t&euml; Udh&euml;zimiz Administrativ Nr. 20/2017. P&euml;r licencimin e Autoshkollave si dhe t&euml; siguroi automjetin p&euml;r provim.
+</p>
+
+<!-- CLAUSE VI -->
+<div class="clause-num">VI</div>
+<p class="clause">
+  Koh&euml;zgjatja, pagesa dhe &ccedil;mimi p&euml;r or&euml; m&euml;simore teori <span class="b">{{ category.theory_hours|default(20) }} (nj&euml;zet)</span> or&euml; 2.08 Euro ora dhe praktik&euml; <span class="b">{{ category.practical_hours|default(20) }} (nj&euml;zet)</span> or&euml; 7.92 Euro ora, i caktuar me nenin 45 paragrafi 1 dhe 2 nenit 47 paragrafi 1 dhe 2 Shtojc&euml;s 1 dhe vendimit t&euml; Ministrit, parapar&euml; me nenin 6 t&euml; Udh&euml;zimit Administrativ Nr. 13/2017 P&euml;r planprogramin e aft&euml;simit t&euml; kandidat&euml;ve p&euml;r shofer b&euml;het n&euml; xhirollogrein&euml; e autoshkoll&euml;s
+</p>
+
+<!-- BANK INFO -->
+<p class="clause" style="margin-top: 1mm;">
+  Emri i Bank&euml;s <span class="b" style="font-size: 10.5pt;">{{ tenant.bank_name|safe_str }}</span> &nbsp;Llogaria Bankare <span class="b">{{ tenant.bank_account|safe_str }}</span>
+</p>
+
+<!-- CLAUSE VII -->
+<div class="clause-num">VII</div>
+<p class="clause">
+  N&euml;se Autoshkoll&euml;s i nd&euml;rpritet - pezullohet ose revokohet puna - licenca apo nd&euml;rpren&euml; - pezullon&euml; pun&euml;n - licenc&euml;n me vet&euml; d&euml;shir&euml; obligohet q&euml; kandidat&euml;ve t&euml; cil&euml;t nuk e kan p&euml;rfunduar n&euml; t&euml;rsi provimin me marrveshje me nj&euml; Autoshkoll&euml; tjet&euml;r t&euml; licencuar siguron mbajtjen e provimit.
+</p>
+
+<!-- CLAUSE VIII -->
+<div class="clause-num">VIII</div>
+<p class="clause">
+  Kontrat&euml;n me kandidat&euml; t&euml; cil&euml;t nuk e kan&euml; mbushur mosh&euml;n 18 (tet&euml;mb&euml;dhjet&euml;) vjet.<br>
+  Parapa me nenin 83 Ligjit Nr. 05/L-064 p&euml;r patent shofer dhe neni 5 paragrafi 3 Udh&euml;zimit Administrativ Nr. 13/2017 p&euml;r planprgramin e aft&euml;simit t&euml; kandidat&euml;ve p&euml;r shofer e n&euml;nshkruan p&euml;rfaq&euml;suesi ligjor
+</p>
+
+<!-- CLAUSE IX -->
+<div class="clause-num">IX</div>
+<p class="clause">
+  Kontrata mund t&euml; nd&euml;rpritet me mosp&euml;rmbushje t&euml; obligimeve nga pal&euml;t kontraktuese dhe p&euml;r zgjedhje t&euml; konfliktit eventual kompetente to t&euml; jet&euml; gjykata themelore dega n&euml; {{ tenant.city|safe_str }};
+</p>
+
+<!-- SIGNATURES -->
+<div class="sig-header">PAL&Euml;T KONTRAKTUESE</div>
+
+<table class="sig-table">
+  <tr>
+    <td class="sig-left">
+      <div class="sig-label">KANDIDATI</div>
+    </td>
+    <td class="sig-center">&nbsp;</td>
+    <td class="sig-right">
+      <div class="sig-label">Autoshkolla ,, {{ tenant.name }} &ldquo;</div>
+    </td>
+  </tr>
+  <tr>
+    <td class="sig-left">
+      <div class="sig-line-left"></div>
+    </td>
+    <td class="sig-center">
+      <div style="margin-top: 12mm; font-size: 9pt;">v.v</div>
+    </td>
+    <td class="sig-right">
+      <div class="sig-line-right"></div>
+    </td>
+  </tr>
+  <tr>
+    <td class="sig-left">
+      <div class="sig-name">{{ candidate.first_name|upper }} ( {% if candidate.parent_name %}{{ candidate.parent_name|safe_str|upper }}{% endif %} ) {{ candidate.last_name|upper }}</div>
+    </td>
+    <td class="sig-center">&nbsp;</td>
+    <td class="sig-right">&nbsp;</td>
+  </tr>
+</table>
+
+</div><!-- end page-border -->
+
+</body>
+</html>

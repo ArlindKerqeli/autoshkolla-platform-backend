@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Libreza e Kandidatit</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 6mm 8mm;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      line-height: 1.25;
+      color: #000;
+    }
+
+    .page { width: 100%; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+
+    /* ---- outer frame ---- */
+    .frame { width: 100%; border: 1px solid #000; }
+    .frame td { vertical-align: top; }
+    .half-left {
+      width: 49%;
+      padding: 4mm 5mm 4mm 4mm;
+      border-right: 1px dashed #999;
+    }
+    .half-right {
+      width: 51%;
+      padding: 5mm 6mm 5mm 7mm;
+    }
+
+    /* ---- section titles ---- */
+    .sec-title { font-size: 9pt; font-weight: bold; margin-bottom: 2mm; }
+    .sec-sub   { font-size: 8.5pt; font-weight: bold; margin-bottom: 3mm; }
+
+    /* ================================================================
+       DATA TABLE — compact rows for all lesson grids
+       ================================================================ */
+    table.grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.5pt;
+    }
+    table.grid th {
+      border: 1px solid #000;
+      padding: 1mm 0.5mm;
+      font-weight: bold;
+      text-align: center;
+      font-size: 7pt;
+      line-height: 1.15;
+    }
+    table.grid td {
+      border: 1px solid #000;
+      padding: 1mm 0.5mm;
+      height: 5mm;
+      text-align: center;
+      font-size: 7.5pt;
+    }
+
+    /* ================================================================
+       REGISTRATION CARD — right half of page 1
+       ================================================================ */
+    .card-hdr { width: 100%; margin-bottom: 0; }
+    .card-hdr td { vertical-align: top; }
+    .card-school { font-weight: bold; font-size: 11pt; }
+    .card-nr { text-align: right; font-size: 9pt; }
+
+    .card-loc { font-size: 10pt; line-height: 1.4; margin-bottom: 0; }
+
+    .card-title {
+      text-align: center;
+      font-size: 20pt;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin: 8mm 0 4mm 0;
+    }
+    .card-sub {
+      text-align: center;
+      font-size: 10pt;
+      margin-bottom: 6mm;
+    }
+    .cat-badge {
+      display: inline-block;
+      border: 2px solid #000;
+      padding: 1mm 4mm;
+      font-weight: bold;
+      font-size: 12pt;
+      margin-left: 3mm;
+      vertical-align: middle;
+    }
+
+    /* Form row: label | underlined value */
+    table.frow { width: 100%; margin-bottom: 4mm; }
+    table.frow td { font-size: 10pt; vertical-align: bottom; padding: 0; }
+    .fl { width: 40%; padding-right: 2mm; }
+    .fv { width: 60%; border-bottom: 1px solid #000; font-weight: bold; padding: 0 2mm 0.5mm 2mm; }
+    .fv-plain { width: 60%; font-weight: bold; padding: 0 2mm 0.5mm 2mm; }
+
+    /* Digit boxes for personal number */
+    .dbox {
+      display: inline-block;
+      width: 5.5mm; height: 5.5mm;
+      border: 1px solid #000;
+      text-align: center;
+      line-height: 5.5mm;
+      font-size: 8pt;
+      font-weight: bold;
+      margin-right: 0.5mm;
+    }
+
+    /* Registration number box */
+    .regbox {
+      display: inline-block;
+      border: 1px solid #000;
+      padding: 1.5mm 6mm;
+      min-width: 18mm; min-height: 6mm;
+      text-align: center;
+      font-weight: bold;
+      font-size: 9pt;
+    }
+
+    /* Medical cert */
+    .med { font-size: 10pt; margin: 4mm 0; }
+    .med div { margin: 1.5mm 0; }
+    .med-n { font-weight: bold; display: inline-block; width: 6mm; }
+
+    .card-bot-sig { text-align: right; font-size: 9pt; margin-top: 8mm; }
+
+    /* ---- signature underlines (WeasyPrint-safe: use <hr>) ---- */
+    hr.uline {
+      border: none;
+      border-top: 1px solid #000;
+      margin: 5mm 0 1mm 0;
+    }
+
+    /* ---- bottom text sections on page 2 ---- */
+    .btm { font-size: 8.5pt; margin-top: 2mm; }
+    .btm p { margin: 0.5mm 0; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page">
+  <table class="frame" cellspacing="0" cellpadding="0">
+    <tr>
+      <!-- LEFT HALF: Aftësimi plotësues -->
+      <td class="half-left">
+        <div class="sec-title">II - L&euml;nda : T&euml; drejtuarit e mjetit me veprim motorik &nbsp;( pjesa praktike )</div>
+        <div class="sec-sub">Aft&euml;simi plot&euml;sues</div>
+
+        <table class="grid" cellspacing="0">
+          <thead>
+            <tr>
+              <th style="width:5%">Nr.</th>
+              <th style="width:11%">Data</th>
+              <th style="width:14%">Koha e ngasjes<br/>Prej - Deri</th>
+              <th style="width:12%">Targat e<br/>automjetit</th>
+              <th style="width:18%">Tema<br/>Nj&euml;sia<br/>m&euml;simore</th>
+              <th style="width:20%">N&euml;nshkrimi i<br/>shoferit -<br/>Instruktorit</th>
+              <th style="width:20%">N&euml;nshkrimi i<br/>kandidatit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(15) %}
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- Instructor opinion + signature -->
+        <div style="margin-top:5mm; font-size:8.5pt;">
+          <p style="font-style:italic; font-weight:bold;">Mendimi i shofer instruktorit:</p>
+          <hr class="uline">
+        </div>
+
+        <div style="margin-top:4mm; font-size:8.5pt;">
+          <p><strong>Emri dhe mbiemri i shofer instruktorit:</strong></p>
+          <hr class="uline">
+        </div>
+
+        <div style="margin-top:3mm; font-size:8.5pt;">
+          <p><strong>N&euml;nshkrimi i shoferit - instruktorit :</strong></p>
+          <hr class="uline">
+        </div>
+      </td>
+
+      <!-- RIGHT HALF: Registration card -->
+      <td class="half-right">
+        <table class="card-hdr" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="card-school">{{ tenant.name|upper }}</td>
+            <td class="card-nr">NR. - K</td>
+          </tr>
+        </table>
+
+        <div class="card-loc">
+          <div>Komuna &nbsp;&nbsp;&nbsp;<strong>{% if candidate.residence_municipality %}{{ candidate.residence_municipality.name|upper }}{% elif tenant.city %}{{ tenant.city|upper }}{% endif %}</strong></div>
+          <div>Rajoni &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{% if candidate.residence_municipality %}{{ candidate.residence_municipality.name|upper }}{% elif tenant.city %}{{ tenant.city|upper }}{% endif %}</strong></div>
+        </div>
+
+        <div class="card-title">LIBREZA &nbsp;E &nbsp;KANDIDATIT</div>
+
+        <div class="card-sub">
+          P&euml;r aft&euml;simin e kandidatit p&euml;r shofer&euml; t&euml; kategoris&euml;
+          <span class="cat-badge">{{ category.code|default('B') }}</span>
+        </div>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Emri dhe mbiemri</td>
+            <td class="fv">{{ candidate.first_name|upper }} ( {{ candidate.parent_name|default('')|safe_str }} ) {{ candidate.last_name|upper }}</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Data dhe vendi i lindjes</td>
+            <td class="fv">{{ candidate.date_of_birth|format_date }} / {% if candidate.birth_place %}{{ candidate.birth_place.name|upper }}{% elif candidate.birth_place_foreign %}{{ candidate.birth_place_foreign|upper }}{% endif %}</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Numri personal i let&euml;rnjoftimit</td>
+            <td class="fv-plain">
+              {% for d in (candidate.personal_number|default('')) %}<span class="dbox">{{ d }}</span>{% endfor %}
+            </td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Adresa :</td>
+            <td class="fv">{% if candidate.residence_place %}{{ candidate.residence_place.name|upper }}{% elif candidate.residence_municipality %}{{ candidate.residence_municipality.name|upper }}{% endif %}</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Telefoni</td>
+            <td class="fv">{{ candidate.phone|safe_str }}</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0" style="margin-top:1mm;">
+          <tr>
+            <td class="fl">Nr. i regjistrit t&euml; kandidatit</td>
+            <td class="fv-plain"><span class="regbox">{{ candidate.protocol_number|safe_str }}</span></td>
+          </tr>
+        </table>
+
+        <div class="med">
+          <div>&Ccedil;ertifikata mjeksore nr. &nbsp;&nbsp;Data :</div>
+          <div>
+            <span class="med-n">1</span>
+            <span style="display:inline-block; border-bottom:1px solid #000; width:70%; min-height:4mm;">&nbsp;</span>
+          </div>
+          <div>
+            <span class="med-n">2</span>
+            <span style="display:inline-block; border-bottom:1px solid #000; width:70%; min-height:4mm;">&nbsp;</span>
+          </div>
+        </div>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">N&euml;nshkrimi i kandidatit :</td>
+            <td class="fv">&nbsp;</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Vendi</td>
+            <td class="fv">{% if candidate.residence_municipality %}{{ candidate.residence_municipality.name|upper }}{% elif tenant.city %}{{ tenant.city|upper }}{% endif %}</td>
+          </tr>
+        </table>
+
+        <table class="frow" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="fl">Data</td>
+            <td class="fv">{{ today|format_date }}</td>
+          </tr>
+        </table>
+
+        <div class="card-bot-sig">N&euml;nshkrimi i personit t&euml; autorizuar</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+  <table class="frame" cellspacing="0" cellpadding="0">
+    <tr>
+      <!-- LEFT: Theory hours -->
+      <td class="half-left">
+        <div class="sec-title">I - L&euml;nda : Rregullat e komunikacionit dhe t&euml; siguris&euml; ( pjesa teorike )</div>
+
+        <table class="grid" cellspacing="0">
+          <thead>
+            <tr>
+              <th style="width:5%">NR</th>
+              <th style="width:10%">Data</th>
+              <th style="width:13%">Koha<br/>Prej &nbsp;- &nbsp;Deri</th>
+              <th style="width:42%">Kapitujt m&euml;simor</th>
+              <th style="width:20%">N&euml;nshkrimi i<br/>ligj&euml;ruesit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(10) %}
+            <tr>
+              <td>{{ i + 1 }}</td>
+              {% if i < theory_sessions|length %}
+              <td>{{ theory_sessions[i].date_realized|format_date }}</td>
+              <td>{% if theory_sessions[i].time_from %}{{ theory_sessions[i].time_from.strftime('%H:%M') }}{% endif %}{% if theory_sessions[i].time_to %} - {{ theory_sessions[i].time_to.strftime('%H:%M') }}{% endif %}</td>
+              <td style="font-weight:bold;">{{ theory_sessions[i].chapter_topics }}</td>
+              <td></td>
+              {% else %}
+              <td></td><td></td><td></td><td></td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div style="margin:3mm 0; font-size:8.5pt; font-weight:bold; text-align:center;">Riaft&euml;simi</div>
+
+        <table class="grid" cellspacing="0">
+          <tbody>
+            {% for i in range(8) %}
+            <tr>
+              <td style="width:5%">{{ i + 1 }}</td>
+              <td style="width:10%"></td>
+              <td style="width:13%"></td>
+              <td style="width:42%"></td>
+              <td style="width:20%"></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="btm">
+          <p>Mendimi i ligj&euml;ruesit: &nbsp;&nbsp;<strong>{% if category and category.verification_text %}{{ category.verification_text }}{% endif %}</strong></p>
+          <hr class="uline">
+
+          <p style="margin-top:2mm;">Emri dhe mbiemri i ligj&euml;ruesit: &nbsp;&nbsp;<strong>{% if candidate.lecturer %}{{ candidate.lecturer.full_name|upper }}{% endif %}</strong></p>
+          <p>N&euml;nshkrimi i ligj&euml;ruesit : <span style="display:inline-block; border-bottom:1px solid #000; width:40%; margin-left:3mm;">&nbsp;</span></p>
+        </div>
+      </td>
+
+      <!-- RIGHT: Practical hours -->
+      <td class="half-right">
+        <div class="sec-title">II - L&euml;nda : T&euml; drejtuarit e mjetit me veprim motorik &nbsp;( pjesa praktike )</div>
+
+        <table class="grid" cellspacing="0">
+          <thead>
+            <tr>
+              <th style="width:5%">Nr.</th>
+              <th style="width:10%">Data</th>
+              <th style="width:13%">Koha e ngasjes<br/>Prej deri</th>
+              <th style="width:11%">Targat e<br/>automjetit</th>
+              <th style="width:16%">Tema<br/>Nj&euml;sia m&euml;simore</th>
+              <th style="width:20%">N&euml;nshkrimi i<br/>shoferit -<br/>Instruktorit</th>
+              <th style="width:15%">N&euml;nshkrimi i<br/>kandidatit</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in range(20) %}
+            <tr>
+              <td>{{ i + 1 }}</td>
+              {% if i < practical_sessions|length %}
+              <td>{{ practical_sessions[i].date_realized|format_date }}</td>
+              <td>{% if practical_sessions[i].time_realized %}{{ practical_sessions[i].time_realized.strftime('%H:%M') }}{% endif %}</td>
+              <td>{% if candidate.vehicle %}{{ candidate.vehicle.plate_number }}{% endif %}</td>
+              <td style="font-weight:bold;">{% if practical_sessions[i].chapter_topics %}{{ practical_sessions[i].chapter_topics }}{% else %}{{ practical_sessions[i].remarks|safe_str }}{% endif %}</td>
+              <td></td>
+              <td></td>
+              {% else %}
+              <td></td><td></td><td></td><td></td><td></td><td></td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <div class="btm">
+          <p>Mendimi i shofer instruktorit: &nbsp;<strong>{% if category and category.verification_text %}{{ category.verification_text }}{% endif %}</strong></p>
+
+          <p style="margin-top:2mm;">Emri dhe mbiemri i shofer instruktorit: &nbsp;&nbsp;<strong>{% if candidate.instructor %}{{ candidate.instructor.full_name|upper }}{% endif %}</strong></p>
+          <p>N&euml;nshkrimi i shofer instruktorit: <span style="display:inline-block; border-bottom:1px solid #000; width:40%; margin-left:3mm;">&nbsp;</span></p>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+</body>
+</html>

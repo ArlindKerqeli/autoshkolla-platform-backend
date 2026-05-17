@@ -1,0 +1,59 @@
+# DigitalOcean App Platform spec
+# Reference: https://docs.digitalocean.com/products/app-platform/reference/app-spec/
+#
+# To use: in the DO App Platform UI, choose "Edit Spec" and paste this in,
+# or commit and let DO auto-detect on first import.
+#
+# After importing, set the SECRET values (SECRET_KEY, JWT_SECRET, DATABASE_URL,
+# CORS_ORIGIN) in the UI — do NOT commit real secrets.
+
+name: autoshkolla-platform-backend
+region: fra  # Frankfurt — closest to Kosovo
+
+services:
+  - name: api
+    github:
+      repo: REPLACE_WITH/autoshkolla-platform-backend
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    environment_slug: python
+    instance_size_slug: basic-xxs   # bump to basic-xs or higher under load
+    instance_count: 1
+    http_port: 8080
+    run_command: gunicorn --config gunicorn_config.py wsgi:app
+    health_check:
+      http_path: /api/v1/health
+      initial_delay_seconds: 10
+      period_seconds: 30
+    envs:
+      - key: FLASK_ENV
+        value: production
+        scope: RUN_AND_BUILD_TIME
+      - key: SECRET_KEY
+        scope: RUN_TIME
+        type: SECRET
+      - key: JWT_SECRET
+        scope: RUN_TIME
+        type: SECRET
+      - key: JWT_ACCESS_EXPIRATION
+        value: 60m
+        scope: RUN_TIME
+      - key: JWT_REFRESH_EXPIRATION
+        value: 7d
+        scope: RUN_TIME
+      - key: DATABASE_URL
+        scope: RUN_TIME
+        type: SECRET
+      - key: CORS_ORIGIN
+        scope: RUN_TIME
+        type: SECRET   # store the Vercel URL here
+
+# Optional: attach a managed Postgres database to this app.
+# Uncomment after creating the DB in DO.
+# databases:
+#   - name: autoshkolla-db
+#     engine: PG
+#     version: "15"
+#     production: false
+#     cluster_name: autoshkolla-db
