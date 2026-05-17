@@ -1,15 +1,15 @@
-# AutoShkolla Pro - Driving School Management System
+# AutoShkolla Platform - Driving School Management System
 ## Development Plan: Flask + Next.js Rebuild
 
-> **Project Name**: `autoshkolla-pro`
-> **Original System**: autoshkolla.solution-ks.com (ASP.NET MVC)
+> **Project Name**: `autoshkolla-platform`
+> **Original System**: autoshkolla-platform
 > **Target Stack**: Flask (backend) + Next.js (frontend) + PostgreSQL
 
 ---
 
 ## 1. Project Overview
 
-Rebuild the existing Kosovo driving school CRM (autoshkolla.solution-ks.com) as a modern, multi-tenant SaaS application. The current system is built on ASP.NET MVC with server-rendered views, jQuery, and Bootstrap. The rebuild targets **Flask (Python backend API)** + **Next.js (React frontend)** with multi-tenancy, super-admin impersonation, and modular architecture.
+Rebuild the existing Kosovo driving school CRM as a modern, multi-tenant SaaS application. The legacy system uses server-rendered views, jQuery, and Bootstrap. The rebuild targets **Flask (Python backend API)** + **Next.js (React frontend)** with multi-tenancy, super-admin impersonation, and modular architecture.
 
 ### Key Requirements
 - Full Albanian language UI (same as current system)
@@ -1205,7 +1205,7 @@ Phase 5 (Documents & Admin - Week 4-5):
 ## 6. Project Structure
 
 ```
-autoshkolla-pro/
+autoshkolla-platform/
 ├── backend/
 │   ├── app/
 │   │   ├── __init__.py          # Flask app factory
@@ -1263,7 +1263,7 @@ npm run dev  # Runs on port 3000
 ### Environment Variables
 ```env
 # Database
-DATABASE_URL=postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_pro
+DATABASE_URL=postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_platform
 REDIS_URL=redis://localhost:6379
 
 # Auth
@@ -1272,7 +1272,7 @@ JWT_ACCESS_TOKEN_EXPIRES=3600
 JWT_REFRESH_TOKEN_EXPIRES=604800
 
 # Super Admin
-SUPER_ADMIN_EMAIL=admin@autoshkolla-pro.com
+SUPER_ADMIN_EMAIL=admin@autoshkolla-platform.com
 SUPER_ADMIN_PASSWORD=initial-password
 
 # PDF

@@ -7,7 +7,7 @@ from datetime import date, datetime
 # This prevents accidentally connecting to (and wiping) the dev database.
 _TEST_DB_URL = os.getenv(
     'TEST_DATABASE_URL',
-    'postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_pro_test',
+    'postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_platform_test',
 )
 os.environ['DATABASE_URL'] = _TEST_DB_URL
 os.environ['FLASK_ENV'] = 'testing'

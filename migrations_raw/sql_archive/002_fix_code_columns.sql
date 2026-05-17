@@ -1,5 +1,5 @@
 -- Fix: municipality and place code columns should be INTEGER to match SQLAlchemy models
--- Run: psql -U autoshkolla -d autoshkolla_pro -f backend/migrations/002_fix_code_columns.sql
+-- Run: psql -U autoshkolla -d autoshkolla_platform -f backend/migrations/002_fix_code_columns.sql
 
 -- Drop the unique constraint on municipalities.code first (uses varchar)
 ALTER TABLE municipalities DROP CONSTRAINT IF EXISTS municipalities_code_key;

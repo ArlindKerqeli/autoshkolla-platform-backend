@@ -1,4 +1,4 @@
-# Autoshkolla-Pro Changelog
+# Autoshkolla Platform Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -71,7 +71,7 @@ All 7 PDF templates now have proper inline CSS styling and parse/render correctl
 ### PDF Templates — ALL 5 Documents Rewritten for 100% Fidelity
 
 #### Reference PDFs & Assets
-- Downloaded 5 original PDF documents from live system (autoshkolla.solution-ks.com)
+- Downloaded 5 original PDF documents from the legacy system
 - Saved to `backend/app/pdf/reference/` as ground-truth references
 - Extracted image assets: school logo (school_logo_rina.png), Kosovo coat of arms (coat_of_arms_kosovo.png), 60 traffic sign images
 - Created `REFERENCE_NOTES.md` with detailed layout specifications
@@ -151,7 +151,7 @@ All 7 PDF templates now have proper inline CSS styling and parse/render correctl
   - `test_instructor_portal_api.py` — 9 tests for instructor self-service endpoints
   - `test_verifications_api.py` — 14 tests for verification CRUD
   - `test_print_docs_api.py` — 9 tests for PDF stub endpoints
-- **Test Database**: `autoshkolla_pro_test` PostgreSQL database for isolated test runs
+- **Test Database**: `autoshkolla_platform_test` PostgreSQL database for isolated test runs
 
 #### Fixed
 - **Critical Bug**: `g.current_user['id']` → `g.current_user['sub']` in 5 API modules (`payments.py`, `users.py`, `superadmin.py`, `theory_hours.py`, `practical_hours.py`). JWT payload stores user ID as `sub`, not `id` — this caused KeyError at runtime
@@ -171,7 +171,7 @@ All 7 PDF templates now have proper inline CSS styling and parse/render correctl
 - **Seed data loaded**: 2 countries (Kosovo, Albania), 38 Kosovo municipalities, 104 places, 1 demo tenant ("AutoShkolla Demo"), 2 users (admin + superadmin)
 
 #### Database Details
-- Connection: `postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_pro`
+- Connection: `postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_platform`
 - Current Alembic head: `bb03ba76cca2`
 - All UUID primary keys, tenant isolation enforced via `tenant_id` FK on all tenant-scoped tables
 

@@ -1,5 +1,5 @@
--- AutoShkolla Pro - Initial Database Schema Migration
--- Run: psql -d autoshkolla_pro -f migrations/001_initial_schema.sql
+-- AutoShkolla Platform - Initial Database Schema Migration
+-- Run: psql -d autoshkolla_platform -f migrations/001_initial_schema.sql
 -- Date: 2026-03-09
 
 -- Enable UUID extension

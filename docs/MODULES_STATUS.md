@@ -1,4 +1,4 @@
-# Autoshkolla-Pro Modules Status Tracker
+# Autoshkolla Platform Modules Status Tracker
 
 **Last Updated**: 2026-03-14
 

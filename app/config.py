@@ -9,7 +9,7 @@ class Config:
     # PostgreSQL
     DATABASE_URL = os.getenv(
         'DATABASE_URL',
-        'postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_pro'
+        'postgresql://autoshkolla:dev_password@localhost:5432/autoshkolla_platform'
     )
 
     # JWT

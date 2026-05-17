@@ -1,4 +1,4 @@
--- Autoshkolla-Pro Database Schema Initialization
+-- Autoshkolla Platform Database Schema Initialization
 -- PostgreSQL 13+
 -- Initialize complete database schema for multi-tenant driving school CRM
 

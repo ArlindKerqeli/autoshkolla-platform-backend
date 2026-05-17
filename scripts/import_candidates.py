@@ -1,5 +1,5 @@
 """
-Import candidates from Excel files into AutoShkolla Pro database.
+Import candidates from Excel files into AutoShkolla Platform database.
 
 Sources:
   1. migration-data-rina-2025.xlsx — 5,054 historical candidates (1995–2025)

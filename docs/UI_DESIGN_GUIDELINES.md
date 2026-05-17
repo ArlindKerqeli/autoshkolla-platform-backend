@@ -1,4 +1,4 @@
-# AutoShkolla Pro — UI Design Guidelines
+# AutoShkolla Platform — UI Design Guidelines
 
 **Version**: 1.0
 **Last Updated**: March 9, 2026
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document provides comprehensive design direction for rebuilding the autoshkolla-pro driving school CRM with a modern, user-friendly interface. The redesign maintains all functionality and workflows from the legacy Bootstrap 3 system while dramatically improving usability, accessibility, and visual design.
+This document provides comprehensive design direction for rebuilding the autoshkolla-platform driving school CRM with a modern, user-friendly interface. The redesign maintains all functionality and workflows from the legacy Bootstrap 3 system while dramatically improving usability, accessibility, and visual design.
 
 **Key Goals**:
 - Modernize from cramped, data-heavy Bootstrap 3 to clean, scannable interfaces

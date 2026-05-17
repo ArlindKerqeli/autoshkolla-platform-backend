@@ -1,4 +1,4 @@
-# AutoShkolla Pro - Database Schema
+# AutoShkolla Platform - Database Schema
 
 ## Overview
 PostgreSQL database with multi-tenant architecture. All tenant-scoped tables include a `tenant_id` foreign key. Reference data (locations) is shared across tenants.

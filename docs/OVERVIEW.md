@@ -1,8 +1,8 @@
-# Autoshkolla-Pro Architecture Overview
+# Autoshkolla Platform Architecture Overview
 
 ## Project Description
 
-**Autoshkolla-Pro** is a comprehensive multi-tenant driving school CRM (Customer Relationship Management) system designed for driving schools in Kosovo. It provides complete management of instructors, candidates, vehicles, theory and practical hours, payments, verifications, and administrative operations.
+**Autoshkolla Platform** is a comprehensive multi-tenant driving school CRM (Customer Relationship Management) system designed for driving schools in Kosovo. It provides complete management of instructors, candidates, vehicles, theory and practical hours, payments, verifications, and administrative operations.
 
 ### Technology Stack
 - **Frontend**: Next.js with Albanian UI language support
@@ -75,7 +75,7 @@
 
 ### Database Strategy: Shared Database with Row-Level Isolation
 
-Autoshkolla-Pro implements multi-tenancy through a shared database model with tenant-level data isolation:
+Autoshkolla Platform implements multi-tenancy through a shared database model with tenant-level data isolation:
 
 #### Key Components
 
@@ -253,7 +253,7 @@ The backend follows the **poolgo-ops pattern**, a structured Flask application a
 
 ### Architecture
 
-Autoshkolla-Pro generates PDFs using **WeasyPrint** (Python library) with **Jinja2** HTML templates. This approach provides:
+Autoshkolla Platform generates PDFs using **WeasyPrint** (Python library) with **Jinja2** HTML templates. This approach provides:
 - Python-native generation (no external service needed)
 - Full control over styling and layout
 - Dynamic content generation from database

@@ -1,8 +1,8 @@
-# Autoshkolla-Pro API Reference
+# Autoshkolla Platform API Reference
 
 ## Overview
 
-This document provides complete reference for all API endpoints in the autoshkolla-pro system. All endpoints follow REST principles and return JSON responses unless otherwise specified.
+This document provides complete reference for all API endpoints in the autoshkolla-platform system. All endpoints follow REST principles and return JSON responses unless otherwise specified.
 
 **Base URL**: `/api/v1`
 

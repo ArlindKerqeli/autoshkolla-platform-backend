@@ -20,7 +20,7 @@ def create_app() -> Flask:
     cors_origins = Config.cors_origins() or ['http://localhost:3000']
     CORS(app, origins=cors_origins,
          supports_credentials=True,
-         allow_headers=['Content-Type', 'Authorization', 'X-Request-Id'],
+         allow_headers=['Content-Type', 'Authorization', 'X-Request-Id', 'ngrok-skip-browser-warning'],
          expose_headers=['X-Request-Id'])
 
     from app.utils.serialization import json_default

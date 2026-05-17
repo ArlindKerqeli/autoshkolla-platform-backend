@@ -1,7 +1,7 @@
 # PDF Reference Notes - Exact Layout from Original System
 
 **Date Captured**: 2026-03-10
-**Source**: autoshkolla.solution-ks.com (live system)
+**Source**: legacy system (live)
 **Candidate Used**: FILAN (AGIM) FISTEKI, Personal Nr: 1198765432, Ferizaj, Category B
 
 ## Reference Files
